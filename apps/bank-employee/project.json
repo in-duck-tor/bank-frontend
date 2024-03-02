@@ -1,0 +1,78 @@
+{
+  "name": "bank-employee",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "bank-frontend",
+  "sourceRoot": "apps/bank-employee/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/bank-employee",
+        "index": "apps/bank-employee/src/index.html",
+        "main": "apps/bank-employee/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/bank-employee/tsconfig.app.json",
+        "inlineStyleLanguage": "less",
+        "assets": [
+          "apps/bank-employee/src/favicon.ico",
+          "apps/bank-employee/src/assets"
+        ],
+        "styles": ["apps/bank-employee/src/styles.less"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "bank-employee:build:production"
+        },
+        "development": {
+          "buildTarget": "bank-employee:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "bank-employee:build"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "bank-employee:build"
+      }
+    }
+  }
+}
