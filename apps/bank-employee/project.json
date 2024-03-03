@@ -8,19 +8,33 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/bank-employee",
         "index": "apps/bank-employee/src/index.html",
         "main": "apps/bank-employee/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/bank-employee/tsconfig.app.json",
         "inlineStyleLanguage": "less",
         "assets": [
           "apps/bank-employee/src/favicon.ico",
-          "apps/bank-employee/src/assets"
+          "apps/bank-employee/src/assets",
+          {
+            "glob": "**/*",
+            "input": "node_modules/@taiga-ui/icons/src",
+            "output": "assets/taiga-ui/icons"
+          }
         ],
-        "styles": ["apps/bank-employee/src/styles.less"],
+        "styles": [
+          "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+          "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+          "node_modules/@taiga-ui/styles/taiga-ui-global.less",
+          "apps/bank-employee/src/styles.less"
+        ],
         "scripts": []
       },
       "configurations": {
