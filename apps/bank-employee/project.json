@@ -2,7 +2,7 @@
   "name": "bank-employee",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "bank-frontend",
+  "prefix": "bank-employee",
   "sourceRoot": "apps/bank-employee/src",
   "tags": [],
   "targets": {

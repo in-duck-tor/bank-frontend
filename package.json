@@ -2,7 +2,11 @@
   "name": "@bank-frontend/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "nx serve bank-employee",
+    "format": "nx format:write",
+    "lint": "eslint ."
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~17.1.0",

@@ -13,7 +13,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "bankFrontend",
+            "prefix": "bankEmployee",
             "style": "camelCase"
           }
         ],
@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "bank-frontend",
+            "prefix": "bank-employee",
             "style": "kebab-case"
           }
         ]
