@@ -59,6 +59,16 @@
       "style": "less",
       "standalone": true,
       "changeDetection": "OnPush",
+      "skipTests": true,
+      "prefix": "bnk"
+    },
+    "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "prefix": "bnk",
+      "style": "less",
+      "standalone": true,
+      "changeDetection": "OnPush",
       "skipTests": true
     }
   }

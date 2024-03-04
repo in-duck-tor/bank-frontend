@@ -1,0 +1,57 @@
+<header tuiNavigationHeader>
+  <span tuiNavigationLogo>
+    <tui-icon icon="tuiIconSlack"></tui-icon>
+    Bank
+  </span>
+  <hr />
+  <tui-avatar src="A" size="m"></tui-avatar>
+</header>
+
+<main tuiNavigationMain>
+  <!-- <tui-breadcrumbs>
+        <a
+            *tuiItem
+            tuiLink
+        >
+            Home
+        </a>
+        <a
+            *tuiItem
+            tuiLink
+        >
+            Projects
+        </a>
+        <a *tuiItem>Project name</a>
+    </tui-breadcrumbs> -->
+  <header tuiHeader>
+    <h1 tuiTitle>
+      <div tuiNavigationLogo>
+        <span tuiFade>{{ title }}</span>
+      </div>
+    </h1>
+  </header>
+
+  <nav tuiNavigationNav>
+    <tui-tabs>
+      @for (item of navigationItems; track $index) {
+      <button tuiTab routerLinkActive [routerLink]="item.link">
+        {{ item.title }}
+      </button>
+      }
+    </tui-tabs>
+
+    <hr />
+
+    <ng-container *polymorpheusOutlet="rightContent"></ng-container>
+    <!-- <button tuiButton>Primary</button>
+    <button
+      appearance="secondary"
+      iconLeft="tuiIconMoreHorizontal"
+      tuiIconButton
+    >
+      More
+    </button> -->
+  </nav>
+
+  <ng-content></ng-content>
+</main>

@@ -1,0 +1,9 @@
+{
+  "name": "all-employees-feature-all-inactive-employees",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/all-employees/feature-all-inactive-employees/src",
+  "prefix": "bnk",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}

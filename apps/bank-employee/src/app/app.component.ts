@@ -11,6 +11,4 @@ import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
   styleUrl: './app.component.less',
   providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
 })
-export class AppComponent {
-  title = 'bank-employee';
-}
+export class AppComponent {}
