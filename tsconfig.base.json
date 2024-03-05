@@ -15,16 +15,17 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@bnk/all-employees/feature-all-inactive-employees": [
-        "libs/all-employees/feature-all-inactive-employees/src/index.ts"
-      ],
-      "@bnk/all-employees/shell": ["libs/all-employees/shell/src/index.ts"],
       "@bnk/all-employees/feature-all-active-employees": [
         "libs/all-employees/feature-all-active-employees/src/index.ts"
+      ],
+      "@bnk/all-employees/feature-all-inactive-employees": [
+        "libs/all-employees/feature-all-inactive-employees/src/index.ts"
       ],
       "@bnk/all-employees/feature-layout": [
         "libs/all-employees/feature-layout/src/index.ts"
       ],
+      "@bnk/all-employees/shell": ["libs/all-employees/shell/src/index.ts"],
+      "@bnk/shared/ui-cards": ["libs/shared/ui-cards/src/index.ts"],
       "@bnk/shared/ui-layout-elements": [
         "libs/shared/ui-layout-elements/src/index.ts"
       ]

@@ -1,36 +1,26 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TuiHostedDropdownModule } from '@taiga-ui/core';
-import { TuiButtonModule, TuiCellModule } from '@taiga-ui/experimental';
-import { TuiDataListWrapperModule } from '@taiga-ui/kit';
+import { ActionsFeedComponent, IAction } from '@bnk/shared/ui-cards';
 
 @Component({
   selector: 'bnk-all-active-employees',
   standalone: true,
-  imports: [
-    CommonModule,
-    TuiCellModule,
-    TuiHostedDropdownModule,
-    TuiDataListWrapperModule,
-    TuiButtonModule,
-  ],
+  imports: [CommonModule, ActionsFeedComponent],
   templateUrl: './all-active-employees.component.html',
   styleUrl: './all-active-employees.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AllActiveEmployeesComponent {
-  readonly actions = [
+  readonly actions: IAction[] = [
     {
       icon: 'tuiIconPhone',
-      toString: () => 'Call now',
+      name: 'Заблокировать',
+      onClick: () => console.log(1),
     },
     {
-      icon: 'tuiIconStar',
-      toString: () => 'Add to favorites',
-    },
-    {
-      icon: 'tuiIconTrash',
-      toString: () => 'Remove item',
+      icon: 'tuiIconPhone',
+      name: '2',
+      onClick: () => console.log(2),
     },
   ];
 }

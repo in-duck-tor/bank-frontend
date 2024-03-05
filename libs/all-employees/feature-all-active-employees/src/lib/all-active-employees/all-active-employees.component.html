@@ -1,43 +1,6 @@
-<a tuiCell>
-  <div tuiTitle>
-    Multiple actions
-    <div tuiSubtitle>With no content on the right</div>
-  </div>
-  <tui-hosted-dropdown tuiDropdownAlign="right" [content]="dropdown">
-    <button
-      appearance="icon"
-      iconLeft="tuiIconMoreHorizontalLarge"
-      tuiIconButton
-    >
-      Action
-    </button>
-    <ng-template #dropdown let-close="close">
-      <tui-data-list-wrapper
-        [items]="actions"
-        (itemClick)="close()"
-      ></tui-data-list-wrapper>
-    </ng-template>
-  </tui-hosted-dropdown>
-</a>
-
-<a tuiCell>
-  <div tuiTitle>
-    Multiple actions
-    <div tuiSubtitle>With no content on the right</div>
-  </div>
-  <tui-hosted-dropdown tuiDropdownAlign="right" [content]="dropdown">
-    <button
-      appearance="icon"
-      iconLeft="tuiIconMoreHorizontalLarge"
-      tuiIconButton
-    >
-      Action
-    </button>
-    <ng-template #dropdown let-close="close">
-      <tui-data-list-wrapper
-        [items]="actions"
-        (itemClick)="close()"
-      ></tui-data-list-wrapper>
-    </ng-template>
-  </tui-hosted-dropdown>
-</a>
+<bnk-actions-feed
+  title="Title"
+  subTitle="subtitle"
+  [actions]="actions"
+  avatarSrc="a"
+></bnk-actions-feed>
