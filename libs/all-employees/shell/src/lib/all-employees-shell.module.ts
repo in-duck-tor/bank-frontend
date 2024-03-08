@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
 import { AllEmployeesLayoutComponent } from '@bnk/all-employees/feature-layout';
+import { EmployeeStatus } from '@bnk/employee/domain';
 
 @NgModule({
   imports: [
@@ -12,16 +14,22 @@ import { AllEmployeesLayoutComponent } from '@bnk/all-employees/feature-layout';
           {
             path: 'active',
             loadComponent: () =>
-              import('@bnk/all-employees/feature-all-active-employees').then(
-                m => m.AllActiveEmployeesComponent,
+              import('@bnk/all-employees/feature-list').then(
+                m => m.AllEmployeesListComponent,
               ),
+            data: {
+              status: EmployeeStatus.Active,
+            },
           },
           {
             path: 'inactive',
             loadComponent: () =>
-              import('@bnk/all-employees/feature-all-inactive-employees').then(
-                m => m.AllInactiveEmployeesComponent,
+              import('@bnk/all-employees/feature-list').then(
+                m => m.AllEmployeesListComponent,
               ),
+            data: {
+              status: EmployeeStatus.Inactive,
+            },
           },
           {
             path: '**',

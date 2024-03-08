@@ -1,0 +1,9 @@
+{
+  "name": "employee-feature-feed-item",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/employee/feature-feed-item/src",
+  "prefix": "bnk",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}

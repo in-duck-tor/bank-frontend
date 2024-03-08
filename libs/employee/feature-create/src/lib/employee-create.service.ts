@@ -4,22 +4,22 @@ import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
 import { Observable, take, tap } from 'rxjs';
 
 import {
-  LoanRateCreateDialogComponent,
-  LoanRateCreateResult,
-} from './loan-rate-create-dialog';
+  EmployeeCreateDialogComponent,
+  EmployeeCreateResult,
+} from './employee-create-dialog';
 
 @Injectable()
-export class LoanRateCreateService {
+export class EmployeeCreateService {
   private readonly tuiDialogService = inject(TuiDialogService);
   private readonly injector = inject(Injector);
 
-  openDialog(): Observable<LoanRateCreateResult> {
+  openDialog(): Observable<EmployeeCreateResult> {
     return this.tuiDialogService
-      .open<LoanRateCreateResult>(
-        new PolymorpheusComponent(LoanRateCreateDialogComponent, this.injector),
+      .open<EmployeeCreateResult>(
+        new PolymorpheusComponent(EmployeeCreateDialogComponent, this.injector),
         {
           dismissible: true,
-          label: 'Новый тариф',
+          label: 'Новый сотрудник',
         },
       )
       .pipe(

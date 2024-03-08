@@ -1,0 +1,9 @@
+{
+  "name": "employee-domain",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/employee/domain/src",
+  "prefix": "bnk",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}

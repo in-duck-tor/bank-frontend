@@ -15,14 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@bnk/all-employees/feature-all-active-employees": [
-        "libs/all-employees/feature-all-active-employees/src/index.ts"
-      ],
-      "@bnk/all-employees/feature-all-inactive-employees": [
-        "libs/all-employees/feature-all-inactive-employees/src/index.ts"
-      ],
+      "@bnk/all-employees/domain": ["libs/all-employees/domain/src/index.ts"],
       "@bnk/all-employees/feature-layout": [
         "libs/all-employees/feature-layout/src/index.ts"
+      ],
+      "@bnk/all-employees/feature-list": [
+        "libs/all-employees/feature-list/src/index.ts"
       ],
       "@bnk/all-employees/shell": ["libs/all-employees/shell/src/index.ts"],
       "@bnk/all-loan-rates/api": ["libs/all-loan-rates/api/src/index.ts"],
@@ -34,6 +32,15 @@
         "libs/all-loan-rates/feature-list/src/index.ts"
       ],
       "@bnk/all-loan-rates/shell": ["libs/all-loan-rates/shell/src/index.ts"],
+      "@bnk/employee/api": ["libs/employee/api/src/index.ts"],
+      "@bnk/employee/domain": ["libs/employee/domain/src/index.ts"],
+      "@bnk/employee/feature-ban": ["libs/employee/feature-ban/src/index.ts"],
+      "@bnk/employee/feature-create": [
+        "libs/employee/feature-create/src/index.ts"
+      ],
+      "@bnk/employee/feature-feed-item": [
+        "libs/employee/feature-feed-item/src/index.ts"
+      ],
       "@bnk/loan-rate/api": ["libs/loan-rate/api/src/index.ts"],
       "@bnk/loan-rate/domain": ["libs/loan-rate/domain/src/index.ts"],
       "@bnk/loan-rate/feature-card": [

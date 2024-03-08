@@ -1,1 +1,1 @@
-export * from './lib/actions-feed/actions-feed.component';
+export * from './lib/user-feed-item';

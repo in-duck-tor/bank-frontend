@@ -1,0 +1,9 @@
+{
+  "name": "employee-feature-ban",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/employee/feature-ban/src",
+  "prefix": "bnk",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}
