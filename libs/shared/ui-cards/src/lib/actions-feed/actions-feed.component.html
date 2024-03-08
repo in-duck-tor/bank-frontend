@@ -1,10 +1,22 @@
 <a tuiCell="l">
-  @if(avatarSrc) {
-  <tui-avatar size="l" appearance="primary" [src]="avatarSrc"></tui-avatar>
+  @if (avatar?.src; as src) {
+    <tui-avatar size="l" [src]="src"></tui-avatar>
+  } @else {
+    @if (avatar?.name; as name) {
+      <tui-avatar
+        size="l"
+        [src]="name | tuiInitials"
+        [style.background]="name | tuiAutoColor"
+      ></tui-avatar>
+    }
   }
 
   <div tuiTitle>
     {{ title }}
+
+    <tui-badge iconLeft="tuiIconLock" appearance="neutral" size="l">
+      Blockddddddddddd
+    </tui-badge>
     <div tuiSubtitle>{{ subTitle }}</div>
   </div>
 
@@ -13,16 +25,14 @@
       appearance="icon"
       iconLeft="tuiIconMoreHorizontalLarge"
       tuiIconButton
-    >
-      Action
-    </button>
+    ></button>
     <ng-template #dropdown let-close="close">
       <tui-data-list>
         <tui-opt-group>
           @for (action of actions; track $index) {
-          <button tuiOption (click)="onClickWrapper(close, action.onClick)">
-            {{ action.name }}
-          </button>
+            <button tuiOption (click)="onClickWrapper(close, action.onClick)">
+              {{ action.name }}
+            </button>
           }
         </tui-opt-group>
       </tui-data-list>

@@ -1,0 +1,9 @@
+{
+  "name": "all-loan-rates-feature-layout",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/all-loan-rates/feature-layout/src",
+  "prefix": "bnk",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}

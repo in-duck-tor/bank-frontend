@@ -6,4 +6,9 @@ export const appRoutes: Route[] = [
     loadChildren: () =>
       import('@bnk/all-employees/shell').then(m => m.AllEmployeesShellModule),
   },
+  {
+    path: 'loan-rates',
+    loadChildren: () =>
+      import('@bnk/all-loan-rates/shell').then(m => m.AllLoanRatesShellModule),
+  },
 ];

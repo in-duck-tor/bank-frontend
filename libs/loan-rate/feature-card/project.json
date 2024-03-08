@@ -1,0 +1,9 @@
+{
+  "name": "loan-rate-feature-card",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/loan-rate/feature-card/src",
+  "prefix": "bnk",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}

@@ -2,9 +2,12 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { TuiDataListModule, TuiHostedDropdownModule } from '@taiga-ui/core';
 import {
+  TuiAutoColorModule,
   TuiAvatarModule,
+  TuiBadgeModule,
   TuiButtonModule,
   TuiCellModule,
+  TuiInitialsModule,
   TuiTitleModule,
 } from '@taiga-ui/experimental';
 import { TuiDataListWrapperModule } from '@taiga-ui/kit';
@@ -27,6 +30,9 @@ export interface IAction {
     TuiAvatarModule,
     TuiDataListModule,
     TuiTitleModule,
+    TuiBadgeModule,
+    TuiInitialsModule,
+    TuiAutoColorModule,
   ],
   templateUrl: './actions-feed.component.html',
   styleUrl: './actions-feed.component.less',
@@ -36,7 +42,7 @@ export class ActionsFeedComponent {
   @Input() actions: IAction[] = [];
   @Input() title = '';
   @Input() subTitle = '';
-  @Input() avatarSrc: string | null = null;
+  @Input() avatar: { src?: string | null; name?: string | null } | null = null;
 
   onClickWrapper(
     closeHandler: () => void,

@@ -25,6 +25,26 @@
         "libs/all-employees/feature-layout/src/index.ts"
       ],
       "@bnk/all-employees/shell": ["libs/all-employees/shell/src/index.ts"],
+      "@bnk/all-loan-rates/api": ["libs/all-loan-rates/api/src/index.ts"],
+      "@bnk/all-loan-rates/domain": ["libs/all-loan-rates/domain/src/index.ts"],
+      "@bnk/all-loan-rates/feature-layout": [
+        "libs/all-loan-rates/feature-layout/src/index.ts"
+      ],
+      "@bnk/all-loan-rates/feature-list": [
+        "libs/all-loan-rates/feature-list/src/index.ts"
+      ],
+      "@bnk/all-loan-rates/shell": ["libs/all-loan-rates/shell/src/index.ts"],
+      "@bnk/loan-rate/api": ["libs/loan-rate/api/src/index.ts"],
+      "@bnk/loan-rate/domain": ["libs/loan-rate/domain/src/index.ts"],
+      "@bnk/loan-rate/feature-card": [
+        "libs/loan-rate/feature-card/src/index.ts"
+      ],
+      "@bnk/loan-rate/feature-create": [
+        "libs/loan-rate/feature-create/src/index.ts"
+      ],
+      "@bnk/loan-rate/feature-create-loan-rate": [
+        "libs/loan-rate/feature-create-loan-rate/src/index.ts"
+      ],
       "@bnk/shared/ui-cards": ["libs/shared/ui-cards/src/index.ts"],
       "@bnk/shared/ui-layout-elements": [
         "libs/shared/ui-layout-elements/src/index.ts"
