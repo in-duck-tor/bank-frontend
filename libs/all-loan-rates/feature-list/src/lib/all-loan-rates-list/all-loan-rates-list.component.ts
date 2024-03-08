@@ -33,5 +33,21 @@ export class AllLoanRatesListComponent {
       title: '4 тариф',
       interestRate: 15,
     },
+    {
+      id: 5,
+      title: '5 тариф',
+      interestRate: 15,
+    },
+    {
+      id: 6,
+      title: '6 тариф',
+      interestRate: 15,
+    },
+
+    {
+      id: 7,
+      title: '7 тариф',
+      interestRate: 15,
+    },
   ];
 }

@@ -1,0 +1,35 @@
+<form [formGroup]="loanRateForm" (ngSubmit)="onSubmit()">
+  <tui-input formControlName="title">Название тарифа</tui-input>
+
+  <tui-input-number
+    class="tui-space_top-4"
+    tuiTextfieldPostfix=" %"
+    formControlName="interestRate"
+    [min]="0"
+    [max]="100"
+    [precision]="4"
+  >
+    Процентная ставка
+  </tui-input-number>
+
+  <div class="tui-space_top-8">
+    <button
+      class="tui-space_right-2"
+      size="m"
+      tuiButton
+      type="submit"
+      [loading]="loader$ | async"
+    >
+      Сохранить
+    </button>
+    <button
+      size="m"
+      tuiButton
+      type="button"
+      appearance="flat"
+      (click)="onCancel()"
+    >
+      Отменить
+    </button>
+  </div>
+</form>

@@ -3,7 +3,13 @@
 </bnk-header>
 
 <ng-template #rightContent>
-  <button appearance="secondary" iconLeft="tuiIconPlus" tuiButton size="s">
+  <button
+    appearance="secondary"
+    iconLeft="tuiIconPlus"
+    tuiButton
+    size="s"
+    (click)="openCreateDialog()"
+  >
     Создать
   </button>
 </ng-template>
