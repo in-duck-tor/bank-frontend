@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 
-import { EmployeeStatus } from '@bnk/employee/domain';
+import { EmployeeStatus, ShortEmployee } from '@bnk/employee/domain';
 import { IAction } from '@bnk/shared/ui-cards';
 
 @Injectable()
 export class EmployeeFeedItemActionsService {
-  getActions(employeeStatus: EmployeeStatus, isBlocked: boolean): IAction[] {
-    switch (employeeStatus) {
+  getActions(employee: ShortEmployee): IAction[] {
+    switch (employee.status) {
       case EmployeeStatus.Active:
         return [
           {
-            name: isBlocked ? 'Разблокировать' : 'Заблокировать',
-            onClick: isBlocked ? () => this.onUnblock() : () => this.onBlock(),
+            name: employee.blockedUntil ? 'Разблокировать' : 'Заблокировать',
+            onClick: employee.blockedUntil
+              ? () => this.onUnblock()
+              : () => this.onBlock(),
           },
         ];
       case EmployeeStatus.Inactive:

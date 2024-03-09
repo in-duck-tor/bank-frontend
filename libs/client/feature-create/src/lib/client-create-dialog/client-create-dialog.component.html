@@ -1,0 +1,45 @@
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+  <tui-input formControlName="email">
+    Email <input autocomplete="email" tuiTextfield type="email" />
+  </tui-input>
+
+  <tui-input class="tui-space_top-4" formControlName="firstName">Имя</tui-input>
+
+  <tui-input class="tui-space_top-4" formControlName="lastName">
+    Фамилия
+  </tui-input>
+
+  <tui-input class="tui-space_top-4" formControlName="middleName">
+    Отчество
+  </tui-input>
+
+  <tui-input-date
+    class="tui-space_top-4"
+    formControlName="birthDate"
+    [max]="maxDate"
+    [min]="minDate"
+  >
+    Дата рождения
+  </tui-input-date>
+
+  <div class="tui-space_top-8">
+    <button
+      class="tui-space_right-2"
+      size="m"
+      tuiButton
+      type="submit"
+      [loading]="loader$ | async"
+    >
+      Сохранить
+    </button>
+    <button
+      size="m"
+      tuiButton
+      type="button"
+      appearance="flat"
+      (click)="onCancel()"
+    >
+      Отменить
+    </button>
+  </div>
+</form>

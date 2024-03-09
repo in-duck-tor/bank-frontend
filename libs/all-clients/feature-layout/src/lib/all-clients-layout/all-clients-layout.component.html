@@ -1,0 +1,19 @@
+<bnk-header
+  title="Клиенты"
+  [navigationItems]="navigationItems"
+  [rightContent]="rightContent"
+>
+  <router-outlet></router-outlet>
+</bnk-header>
+
+<ng-template #rightContent>
+  <button
+    appearance="secondary"
+    iconLeft="tuiIconPlus"
+    tuiButton
+    size="s"
+    (click)="openCreateDialog()"
+  >
+    Создать
+  </button>
+</ng-template>

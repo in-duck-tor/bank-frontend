@@ -9,63 +9,65 @@ import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 import {
-  EmployeeFeedItemComponent,
-  EmployeeStatus,
-  ShortEmployee,
-} from '@bnk/employee/api';
+  ClientFeedItemComponent,
+  ClientStatus,
+  ShortClient,
+} from '@bnk/client/api';
 
 @Component({
-  selector: 'bnk-all-employees-list',
+  selector: 'bnk-all-clients-list',
   standalone: true,
-  imports: [CommonModule, EmployeeFeedItemComponent],
-  templateUrl: './all-employees-list.component.html',
-  styleUrl: './all-employees-list.component.less',
+  imports: [CommonModule, ClientFeedItemComponent],
+  templateUrl: './all-clients-list.component.html',
+  styleUrl: './all-clients-list.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AllEmployeesListComponent implements OnInit {
+export class AllClientsListComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
 
-  readonly mock$ = new BehaviorSubject<ShortEmployee[]>([]);
+  readonly mock$ = new BehaviorSubject<ShortClient[]>([]);
 
-  readonly mocks: Record<EmployeeStatus, ShortEmployee[]> = {
-    [EmployeeStatus.Active]: [
+  readonly mocks: Record<ClientStatus, ShortClient[]> = {
+    [ClientStatus.Active]: [
       {
         id: 1,
         email: 'alyonta',
         firstName: 'Алёна',
         lastName: 'Тарасова',
         middleName: 'Васильевна',
-        position: 'Консультант',
+        birthDate: '2003-01-01',
         blockedUntil: '12-12-12',
-        status: EmployeeStatus.Active,
+        status: ClientStatus.Active,
       },
       {
         id: 1,
         email: 'alyonta',
         firstName: 'Алёна',
         lastName: 'Тарасова',
-        status: EmployeeStatus.Active,
+        birthDate: '2003-01-01',
+        status: ClientStatus.Active,
       },
     ],
-    [EmployeeStatus.Inactive]: [
+    [ClientStatus.Inactive]: [
       {
         id: 3,
         email: 'alyonta',
         firstName: 'Алёна',
         lastName: 'Тарасова',
         middleName: 'Васильевна',
-        position: 'Консультант',
+        birthDate: '2003-01-01',
         blockedUntil: '12-12-12',
         inactiveSince: '13-13-13',
-        status: EmployeeStatus.Inactive,
+        status: ClientStatus.Inactive,
       },
       {
         id: 4,
         email: 'alyonta',
         firstName: 'Алёна',
         lastName: 'Тарасова',
+        birthDate: '2003-01-01',
         inactiveSince: '13-13-13',
-        status: EmployeeStatus.Inactive,
+        status: ClientStatus.Inactive,
       },
     ],
   };
@@ -73,7 +75,7 @@ export class AllEmployeesListComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.mock$.next(
-        data['status'] ? this.mocks[data['status'] as EmployeeStatus] : [],
+        data['status'] ? this.mocks[data['status'] as ClientStatus] : [],
       );
     });
   }

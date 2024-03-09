@@ -29,6 +29,10 @@
     <div tuiSubtitle>{{ subTitle }}</div>
   </div>
 
+  @if (tooltipText) {
+    <tui-tooltip [content]="tooltipText"></tui-tooltip>
+  }
+
   @if (actions.length) {
     <tui-hosted-dropdown tuiDropdownAlign="right" [content]="dropdown">
       <button
@@ -48,9 +52,5 @@
         </tui-data-list>
       </ng-template>
     </tui-hosted-dropdown>
-  }
-
-  @if (tooltipText) {
-    <tui-tooltip [content]="tooltipText"></tui-tooltip>
   }
 </a>

@@ -51,8 +51,7 @@ export class EmployeeFeedItemComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.actions = this.employeeFeedItemActionsService.getActions(
-      this.employee.status,
-      !!this.employee.blockedUntil,
+      this.employee,
     );
   }
 }
