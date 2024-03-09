@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { takeUntil } from 'rxjs';
 
 import { TuiDestroyService } from '@taiga-ui/cdk';
 import { TuiButtonModule } from '@taiga-ui/experimental';
-import { takeUntil } from 'rxjs';
 
-import { RouterModule } from '@angular/router';
 import { ClientCreateService } from '@bnk/client/api';
 import {
   HeaderComponent,

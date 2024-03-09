@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { AllEmployeesLayoutComponent } from '@bnk/all-employees/feature-layout';
 import { EmployeeStatus } from '@bnk/employee/domain';
+import { ROUTER_PATHS } from '@bnk/shared/util-navigation';
 
 @NgModule({
   imports: [
@@ -12,7 +13,7 @@ import { EmployeeStatus } from '@bnk/employee/domain';
         component: AllEmployeesLayoutComponent,
         children: [
           {
-            path: 'active',
+            path: ROUTER_PATHS.employeesActive,
             loadComponent: () =>
               import('@bnk/all-employees/feature-list').then(
                 m => m.AllEmployeesListComponent,
@@ -22,7 +23,7 @@ import { EmployeeStatus } from '@bnk/employee/domain';
             },
           },
           {
-            path: 'inactive',
+            path: ROUTER_PATHS.employeesInactive,
             loadComponent: () =>
               import('@bnk/all-employees/feature-list').then(
                 m => m.AllEmployeesListComponent,

@@ -48,7 +48,7 @@ export interface NavigationItem {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  @Input() title = '';
+  @Input() title: string | null = null;
   @Input() rightContent: PolymorpheusContent;
   @Input() navigationItems: NavigationItem[] = [];
 }

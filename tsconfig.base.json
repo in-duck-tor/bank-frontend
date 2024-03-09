@@ -15,7 +15,16 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@bnk/client/feature-create": ["libs/client/feature-create/src/index.ts"],
+      "@bnk/all-accounts/api": ["libs/all-accounts/api/src/index.ts"],
+      "@bnk/all-accounts/domain": ["libs/all-accounts/domain/src/index.ts"],
+      "@bnk/all-accounts/feature-layout": [
+        "libs/all-accounts/feature-layout/src/index.ts"
+      ],
+      "@bnk/all-accounts/feature-list": [
+        "libs/all-accounts/feature-list/src/index.ts"
+      ],
+      "@bnk/all-accounts/shell": ["libs/all-accounts/shell/src/index.ts"],
+      "@bnk/all-clients/api": ["libs/all-clients/api/src/index.ts"],
       "@bnk/all-clients/feature-layout": [
         "libs/all-clients/feature-layout/src/index.ts"
       ],
@@ -23,6 +32,7 @@
         "libs/all-clients/feature-list/src/index.ts"
       ],
       "@bnk/all-clients/shell": ["libs/all-clients/shell/src/index.ts"],
+      "@bnk/all-employees/api": ["libs/all-employees/api/src/index.ts"],
       "@bnk/all-employees/domain": ["libs/all-employees/domain/src/index.ts"],
       "@bnk/all-employees/feature-layout": [
         "libs/all-employees/feature-layout/src/index.ts"
@@ -42,6 +52,7 @@
       "@bnk/all-loan-rates/shell": ["libs/all-loan-rates/shell/src/index.ts"],
       "@bnk/client/api": ["libs/client/api/src/index.ts"],
       "@bnk/client/domain": ["libs/client/domain/src/index.ts"],
+      "@bnk/client/feature-create": ["libs/client/feature-create/src/index.ts"],
       "@bnk/client/feature-feed-item": [
         "libs/client/feature-feed-item/src/index.ts"
       ],
@@ -68,6 +79,9 @@
       "@bnk/shared/ui-cards": ["libs/shared/ui-cards/src/index.ts"],
       "@bnk/shared/ui-layout-elements": [
         "libs/shared/ui-layout-elements/src/index.ts"
+      ],
+      "@bnk/shared/util-navigation": [
+        "libs/shared/util-navigation/src/index.ts"
       ]
     }
   },

@@ -1,10 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ClientStatus, ShortClient } from '@bnk/client/domain';
 import { IAction } from '@bnk/shared/ui-cards';
+import {
+  CLIENT_ACCOUNTS_ABSOLUTE_PATH,
+  CLIENT_LOANS_ABSOLUTE_PATH,
+} from '@bnk/shared/util-navigation';
 
 @Injectable()
 export class ClientFeedItemActionsService {
+  private readonly router = inject(Router);
+
   getActions(client: ShortClient): IAction[] {
     const baseActions = this.getBaseActions(client.id);
 
@@ -46,10 +53,10 @@ export class ClientFeedItemActionsService {
   }
 
   private navigateToAccounts(clientId: number): void {
-    console.log(2);
+    this.router.navigate(CLIENT_ACCOUNTS_ABSOLUTE_PATH(clientId));
   }
 
   private navigateToLoans(clientId: number): void {
-    console.log(2);
+    this.router.navigate(CLIENT_LOANS_ABSOLUTE_PATH(clientId));
   }
 }

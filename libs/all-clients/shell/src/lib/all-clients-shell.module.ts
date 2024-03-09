@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { AllClientsLayoutComponent } from '@bnk/all-clients/feature-layout';
 import { ClientStatus } from '@bnk/client/domain';
+import { ROUTER_PATHS } from '@bnk/shared/util-navigation';
 
 @NgModule({
   imports: [
@@ -12,7 +13,7 @@ import { ClientStatus } from '@bnk/client/domain';
         component: AllClientsLayoutComponent,
         children: [
           {
-            path: 'active',
+            path: ROUTER_PATHS.clientsActive,
             loadComponent: () =>
               import('@bnk/all-clients/feature-list').then(
                 m => m.AllClientsListComponent,
@@ -22,7 +23,7 @@ import { ClientStatus } from '@bnk/client/domain';
             },
           },
           {
-            path: 'inactive',
+            path: ROUTER_PATHS.clientsInactive,
             loadComponent: () =>
               import('@bnk/all-clients/feature-list').then(
                 m => m.AllClientsListComponent,
@@ -33,7 +34,7 @@ import { ClientStatus } from '@bnk/client/domain';
           },
           {
             path: '**',
-            redirectTo: 'active',
+            redirectTo: ROUTER_PATHS.clientsActive,
           },
         ],
       },
