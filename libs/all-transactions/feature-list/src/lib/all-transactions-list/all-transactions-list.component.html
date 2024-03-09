@@ -1,1 +1,22 @@
-<p>all-transactions-list works!</p>
+<bnk-all-transactions-period-filter
+  class="period"
+></bnk-all-transactions-period-filter>
+
+<div class="totals">
+  <bnk-all-transactions-receipts
+    class="totals-item"
+  ></bnk-all-transactions-receipts>
+  <bnk-all-transactions-expenditure
+    class="totals-item"
+  ></bnk-all-transactions-expenditure>
+</div>
+
+<div class="tui-space_top-4">
+  @for (item of mock; track item.id) {
+    <bnk-transaction-feed-item
+      class="tui-space_top-2"
+      [transaction]="item"
+      currentAccountNumber="1010101"
+    ></bnk-transaction-feed-item>
+  }
+</div>

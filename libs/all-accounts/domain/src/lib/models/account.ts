@@ -10,7 +10,7 @@ export enum AccountType {
 }
 
 export interface Account {
-  number: number;
+  number: string;
   currencyCode?: string | null;
   bankCode?: string | null;
   amount: number;

@@ -1,0 +1,9 @@
+{
+  "name": "all-transactions-feature-list-feed-item",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/all-transactions/feature-list-feed-item/src",
+  "prefix": "bnk",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}

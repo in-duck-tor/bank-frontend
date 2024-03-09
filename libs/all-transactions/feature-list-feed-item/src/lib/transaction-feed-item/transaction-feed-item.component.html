@@ -1,0 +1,80 @@
+<div tuiCell>
+  @if (transaction.finishedAt) {
+    <div class="date">
+      <div>{{ transaction.finishedAt | date: 'd' }}</div>
+      <div>{{ transaction.finishedAt | date: 'MMMM' }}</div>
+    </div>
+  }
+  <ng-container *ngTemplateOutlet="info"></ng-container>
+
+  <div tuiTitle>
+    <ng-container *ngTemplateOutlet="amount"></ng-container>
+    <ng-container *ngTemplateOutlet="status"></ng-container>
+  </div>
+</div>
+
+<hr />
+
+<ng-template #amount>
+  @switch (transaction | tuiMapper: getAmountType) {
+    @case ('deposit') {
+      <tui-badge appearance="success" size="m">
+        +{{ transaction.depositOn!.amount | tuiFormatNumber }}
+        {{ transaction.depositOn!.currencyCode ?? '' | tuiCurrency }}
+      </tui-badge>
+    }
+    @case ('withdraw') {
+      <tui-badge appearance="error" size="m">
+        -{{ transaction.withdrawFrom!.amount | tuiFormatNumber }}
+        {{ transaction.withdrawFrom!.currencyCode ?? '' | tuiCurrency }}
+      </tui-badge>
+    }
+  }
+</ng-template>
+
+<ng-template #status>
+  @switch (transaction.status) {
+    @case ('pending') {
+      <div tuiSubtitle class="tui-space_top-2">Ожидает выполнения</div>
+    }
+    @case ('canceled') {
+      <div
+        tuiSubtitle
+        class="tui-space_top-2"
+        [style.color]="'var(--tui-negative)'"
+      >
+        Отменена
+      </div>
+    }
+    @default {
+      <div tuiSubtitle>&nbsp;</div>
+    }
+  }
+</ng-template>
+
+<ng-template #info>
+  @switch (transaction.type) {
+    @case ('deposit') {
+      <div tuiTitle>Поступление</div>
+    }
+
+    @case ('withdraw') {
+      <div tuiTitle>Списание</div>
+    }
+
+    @default {
+      <div tuiTitle>
+        Перевод между счетами
+        <div tuiSubtitle class="tui-space_top-2">
+          <tui-thumbnail-card paymentSystem="mastercard" size="m">
+            {{ transaction.withdrawFrom!.accountNumber }}
+          </tui-thumbnail-card>
+          →
+          <tui-thumbnail-card paymentSystem="mastercard" size="m">
+            {{ transaction.depositOn!.accountNumber }}
+          </tui-thumbnail-card>
+        </div>
+      </div>
+    }
+  }
+</ng-template>

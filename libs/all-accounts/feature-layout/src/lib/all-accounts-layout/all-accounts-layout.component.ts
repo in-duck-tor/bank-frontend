@@ -6,8 +6,6 @@ import {
   inject,
 } from '@angular/core';
 
-import { TuiButtonModule } from '@taiga-ui/core';
-
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import {
   HeaderComponent,
@@ -20,7 +18,7 @@ import { BehaviorSubject, takeUntil } from 'rxjs';
 @Component({
   selector: 'bnk-all-accounts-layout',
   standalone: true,
-  imports: [CommonModule, RouterModule, HeaderComponent, TuiButtonModule],
+  imports: [CommonModule, RouterModule, HeaderComponent],
   providers: [TuiDestroyService],
   templateUrl: './all-accounts-layout.component.html',
   styleUrl: './all-accounts-layout.component.less',

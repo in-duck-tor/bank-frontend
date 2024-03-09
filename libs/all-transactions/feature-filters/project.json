@@ -1,0 +1,9 @@
+{
+  "name": "all-transactions-feature-filters",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/all-transactions/feature-filters/src",
+  "prefix": "bnk",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}

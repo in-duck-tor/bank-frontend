@@ -1,3 +1,5 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
 header {
   display: flex;
   justify-content: space-between;
@@ -6,4 +8,8 @@ header {
 
 [tuiNavigationNav] {
   box-shadow: none;
+}
+
+main[tuiNavigationMain] > [tuiHeader] {
+  .tui-space(bottom, 4);
 }

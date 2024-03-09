@@ -13,6 +13,7 @@ import {
   TuiButtonModule,
   TuiIconModule,
   TuiNavigationModule,
+  TuiTitleModule,
 } from '@taiga-ui/experimental';
 import { TuiTabsModule } from '@taiga-ui/kit';
 import {
@@ -40,6 +41,7 @@ export interface NavigationItem {
     TuiExpandModule,
     TuiTabsModule,
     TuiButtonModule,
+    TuiTitleModule,
     PolymorpheusModule,
     RouterModule,
   ],

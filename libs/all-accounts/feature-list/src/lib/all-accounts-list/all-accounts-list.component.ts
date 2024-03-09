@@ -15,7 +15,7 @@ import { AllAccountsListCardComponent } from '@bnk/all-accounts/feature-list-car
 export class AllAccountsListComponent {
   readonly mock: Account[] = [
     {
-      number: 1111145451,
+      number: '1111145451',
       currencyCode: 'RUB',
       amount: 200,
       state: AccountStatus.Active,
@@ -23,20 +23,20 @@ export class AllAccountsListComponent {
       type: AccountType.Payment,
     },
     {
-      number: 111111,
+      number: '111111',
       currencyCode: 'USD',
       amount: 10000000,
       state: AccountStatus.Active,
       type: AccountType.Payment,
     },
     {
-      number: 111111,
+      number: '111111',
       amount: 0,
       state: AccountStatus.Frozen,
       type: AccountType.Payment,
     },
     {
-      number: 111111,
+      number: '111111',
       amount: 0,
       state: AccountStatus.Closed,
       type: AccountType.Loan,

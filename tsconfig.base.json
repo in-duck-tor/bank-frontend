@@ -54,11 +54,23 @@
       ],
       "@bnk/all-loan-rates/shell": ["libs/all-loan-rates/shell/src/index.ts"],
       "@bnk/all-transactions/api": ["libs/all-transactions/api/src/index.ts"],
+      "@bnk/all-transactions/domain": [
+        "libs/all-transactions/domain/src/index.ts"
+      ],
+      "@bnk/all-transactions/feature-filters": [
+        "libs/all-transactions/feature-filters/src/index.ts"
+      ],
       "@bnk/all-transactions/feature-layout": [
         "libs/all-transactions/feature-layout/src/index.ts"
       ],
       "@bnk/all-transactions/feature-list": [
         "libs/all-transactions/feature-list/src/index.ts"
+      ],
+      "@bnk/all-transactions/feature-list-feed-item": [
+        "libs/all-transactions/feature-list-feed-item/src/index.ts"
+      ],
+      "@bnk/all-transactions/feature-totals": [
+        "libs/all-transactions/feature-totals/src/index.ts"
       ],
       "@bnk/all-transactions/shell": [
         "libs/all-transactions/shell/src/index.ts"

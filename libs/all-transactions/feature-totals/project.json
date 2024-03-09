@@ -1,0 +1,9 @@
+{
+  "name": "all-transactions-feature-totals",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/all-transactions/feature-totals/src",
+  "prefix": "bnk",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}
