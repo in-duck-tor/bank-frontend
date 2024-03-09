@@ -12,6 +12,19 @@ export const appRoutes: Route[] = [
     path: ROUTER_PATHS.clients,
     loadChildren: () =>
       import('@bnk/all-clients/api').then(m => m.AllClientsShellModule),
+
+    // children: [
+    //   {
+    //     path: `${ROUTER_PATHS.clientDetails}/${ROUTER_PATHS.accounts}`,
+    //     loadChildren: () =>
+    //       import('@bnk/all-accounts/api').then(m => m.AllAccountsShellModule),
+    //   },
+    //   {
+    //     path: '',
+    //     loadChildren: () =>
+    //       import('@bnk/all-clients/api').then(m => m.AllClientsShellModule),
+    //   },
+    // ],
   },
   {
     path: ROUTER_PATHS.loanRates,
