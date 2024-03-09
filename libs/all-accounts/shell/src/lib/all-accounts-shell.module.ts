@@ -32,6 +32,11 @@ import { ROUTER_PATHS } from '@bnk/shared/util-navigation';
               status: AccountStatus.Closed,
             },
           },
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: ROUTER_PATHS.accountsActive,
+          },
         ],
       },
       {
@@ -40,10 +45,6 @@ import { ROUTER_PATHS } from '@bnk/shared/util-navigation';
           import('@bnk/all-transactions/api').then(
             m => m.AllTransactionsShellModule,
           ),
-      },
-      {
-        path: '**',
-        redirectTo: ROUTER_PATHS.accountsActive,
       },
     ]),
   ],

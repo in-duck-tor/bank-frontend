@@ -10,6 +10,7 @@ import { ROUTER_PATHS } from '@bnk/shared/util-navigation';
     RouterModule.forChild([
       {
         path: '',
+
         component: AllClientsLayoutComponent,
         children: [
           {
@@ -32,16 +33,17 @@ import { ROUTER_PATHS } from '@bnk/shared/util-navigation';
               status: ClientStatus.Inactive,
             },
           },
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: ROUTER_PATHS.clientsActive,
+          },
         ],
       },
       {
         path: `${ROUTER_PATHS.clientDetails}/${ROUTER_PATHS.accounts}`,
         loadChildren: () =>
           import('@bnk/all-accounts/api').then(m => m.AllAccountsShellModule),
-      },
-      {
-        path: '**',
-        redirectTo: ROUTER_PATHS.clientsActive,
       },
     ]),
   ],
