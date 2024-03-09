@@ -15,9 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@bnk/all-accounts/feature-list-card": [
-        "libs/all-accounts/feature-list-card/src/index.ts"
-      ],
       "@bnk/all-accounts/api": ["libs/all-accounts/api/src/index.ts"],
       "@bnk/all-accounts/domain": ["libs/all-accounts/domain/src/index.ts"],
       "@bnk/all-accounts/feature-layout": [
@@ -25,6 +22,9 @@
       ],
       "@bnk/all-accounts/feature-list": [
         "libs/all-accounts/feature-list/src/index.ts"
+      ],
+      "@bnk/all-accounts/feature-list-card": [
+        "libs/all-accounts/feature-list-card/src/index.ts"
       ],
       "@bnk/all-accounts/shell": ["libs/all-accounts/shell/src/index.ts"],
       "@bnk/all-clients/api": ["libs/all-clients/api/src/index.ts"],
@@ -53,6 +53,16 @@
         "libs/all-loan-rates/feature-list/src/index.ts"
       ],
       "@bnk/all-loan-rates/shell": ["libs/all-loan-rates/shell/src/index.ts"],
+      "@bnk/all-transactions/api": ["libs/all-transactions/api/src/index.ts"],
+      "@bnk/all-transactions/feature-layout": [
+        "libs/all-transactions/feature-layout/src/index.ts"
+      ],
+      "@bnk/all-transactions/feature-list": [
+        "libs/all-transactions/feature-list/src/index.ts"
+      ],
+      "@bnk/all-transactions/shell": [
+        "libs/all-transactions/shell/src/index.ts"
+      ],
       "@bnk/client/api": ["libs/client/api/src/index.ts"],
       "@bnk/client/domain": ["libs/client/domain/src/index.ts"],
       "@bnk/client/feature-create": ["libs/client/feature-create/src/index.ts"],

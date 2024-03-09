@@ -14,6 +14,7 @@ export const ROUTER_PATHS = {
   loans: 'loans',
   loansActive: 'active',
   loansPaid: 'paid',
+  transactions: 'transactions',
 };
 
 export const CLIENT_ACCOUNTS_ABSOLUTE_PATH = (clientId: number) => [

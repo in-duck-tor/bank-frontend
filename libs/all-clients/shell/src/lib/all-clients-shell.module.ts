@@ -32,11 +32,16 @@ import { ROUTER_PATHS } from '@bnk/shared/util-navigation';
               status: ClientStatus.Inactive,
             },
           },
-          {
-            path: '**',
-            redirectTo: ROUTER_PATHS.clientsActive,
-          },
         ],
+      },
+      {
+        path: `${ROUTER_PATHS.clientDetails}/${ROUTER_PATHS.accounts}`,
+        loadChildren: () =>
+          import('@bnk/all-accounts/api').then(m => m.AllAccountsShellModule),
+      },
+      {
+        path: '**',
+        redirectTo: ROUTER_PATHS.clientsActive,
       },
     ]),
   ],

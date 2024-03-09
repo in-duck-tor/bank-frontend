@@ -1,5 +1,8 @@
 <a tuiCardLarge tuiCell tuiSurface="elevated" [routerLink]="transactionsPath">
-  <tui-avatar appearance="primary" src="tuiIconStar"></tui-avatar>
+  <tui-avatar
+    appearance="primary"
+    [src]="account | tuiMapper: getAvatarIcon"
+  ></tui-avatar>
 
   <div tuiTitle="m">
     {{ account.amount | tuiFormatNumber }}
@@ -10,12 +13,16 @@
     }
   </div>
 
-  <tui-thumbnail-card
-    [iconLeft]="account | tuiMapper: getStatusIcon"
-    iconRight="tuiIconUser"
-    paymentSystem="mastercard"
-    size="l"
-  >
-    {{ account.number }}
-  </tui-thumbnail-card>
+  <div class="card">
+    <tui-thumbnail-card
+      iconRight="tuiIconUser"
+      paymentSystem="mastercard"
+      size="l"
+      [tuiHint]="account | tuiMapper: getStatusTooltip"
+      [iconLeft]="account | tuiMapper: getStatusIcon"
+    >
+      {{ account.number }}
+    </tui-thumbnail-card>
+    <div tuiSubtitle>{{ account | tuiMapper: getTypeText }}</div>
+  </div>
 </a>
