@@ -1,0 +1,21 @@
+<a tuiCardLarge tuiCell tuiSurface="elevated" [routerLink]="transactionsPath">
+  <tui-avatar appearance="primary" src="tuiIconStar"></tui-avatar>
+
+  <div tuiTitle="m">
+    {{ account.amount | tuiFormatNumber }}
+    {{ account.currencyCode ?? '' | tuiCurrency }}
+
+    @if (account.comment) {
+      <div tuiSubtitle>{{ account.comment }}</div>
+    }
+  </div>
+
+  <tui-thumbnail-card
+    [iconLeft]="account | tuiMapper: getStatusIcon"
+    iconRight="tuiIconUser"
+    paymentSystem="mastercard"
+    size="l"
+  >
+    {{ account.number }}
+  </tui-thumbnail-card>
+</a>

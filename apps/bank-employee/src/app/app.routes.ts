@@ -12,12 +12,12 @@ export const appRoutes: Route[] = [
     path: ROUTER_PATHS.clients,
     children: [
       {
-        path: ROUTER_PATHS.clientDetails,
+        path: `${ROUTER_PATHS.clientDetails}/${ROUTER_PATHS.accounts}`,
         loadChildren: () =>
           import('@bnk/all-accounts/api').then(m => m.AllAccountsShellModule),
       },
       {
-        path: '**',
+        path: '',
         loadChildren: () =>
           import('@bnk/all-clients/api').then(m => m.AllClientsShellModule),
       },

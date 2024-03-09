@@ -6,24 +6,27 @@ import {
   inject,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, takeUntil } from 'rxjs';
 
 import {
   EmployeeFeedItemComponent,
   EmployeeStatus,
   ShortEmployee,
 } from '@bnk/employee/api';
+import { TuiDestroyService } from '@taiga-ui/cdk';
 
 @Component({
   selector: 'bnk-all-employees-list',
   standalone: true,
   imports: [CommonModule, EmployeeFeedItemComponent],
+  providers: [TuiDestroyService],
   templateUrl: './all-employees-list.component.html',
   styleUrl: './all-employees-list.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AllEmployeesListComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
+  private readonly destroy$ = inject(TuiDestroyService);
 
   readonly mock$ = new BehaviorSubject<ShortEmployee[]>([]);
 
@@ -71,7 +74,7 @@ export class AllEmployeesListComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.route.data.subscribe(data => {
+    this.route.data.pipe(takeUntil(this.destroy$)).subscribe(data => {
       this.mock$.next(
         data['status'] ? this.mocks[data['status'] as EmployeeStatus] : [],
       );

@@ -6,24 +6,27 @@ import {
   inject,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, takeUntil } from 'rxjs';
 
 import {
   ClientFeedItemComponent,
   ClientStatus,
   ShortClient,
 } from '@bnk/client/api';
+import { TuiDestroyService } from '@taiga-ui/cdk';
 
 @Component({
   selector: 'bnk-all-clients-list',
   standalone: true,
   imports: [CommonModule, ClientFeedItemComponent],
+  providers: [TuiDestroyService],
   templateUrl: './all-clients-list.component.html',
   styleUrl: './all-clients-list.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AllClientsListComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
+  private readonly destroy$ = inject(TuiDestroyService);
 
   readonly mock$ = new BehaviorSubject<ShortClient[]>([]);
 
@@ -73,7 +76,7 @@ export class AllClientsListComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.route.data.subscribe(data => {
+    this.route.data.pipe(takeUntil(this.destroy$)).subscribe(data => {
       this.mock$.next(
         data['status'] ? this.mocks[data['status'] as ClientStatus] : [],
       );

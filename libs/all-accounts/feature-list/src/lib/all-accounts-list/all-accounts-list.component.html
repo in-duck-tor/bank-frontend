@@ -1,1 +1,3 @@
-<p>all-accounts-list works!</p>
+@for (item of mock; track item.number) {
+  <bnk-all-accounts-list-card [account]="item"></bnk-all-accounts-list-card>
+}

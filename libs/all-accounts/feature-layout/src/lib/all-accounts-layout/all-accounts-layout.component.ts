@@ -45,7 +45,7 @@ export class AllAccountsLayoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe(params => {
-      console.log(params['clientId']);
+      this.title$.next(`Все счета клиента ${params['clientId']}`);
     });
   }
 }

@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@bnk/all-accounts/feature-list-card": [
+        "libs/all-accounts/feature-list-card/src/index.ts"
+      ],
       "@bnk/all-accounts/api": ["libs/all-accounts/api/src/index.ts"],
       "@bnk/all-accounts/domain": ["libs/all-accounts/domain/src/index.ts"],
       "@bnk/all-accounts/feature-layout": [

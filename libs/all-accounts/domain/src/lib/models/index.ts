@@ -1,1 +1,1 @@
-export * from './short-accounts';
+export * from './account';
