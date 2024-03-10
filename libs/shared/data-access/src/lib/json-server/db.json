@@ -1,0 +1,97 @@
+{
+  "clients": [
+    {
+      "id": "1",
+      "email": "alyonta",
+      "firstName": "Алёна",
+      "lastName": "Тарасова",
+      "middleName": "Васильевна",
+      "birthDate": "2003-01-01",
+      "blockedUntil": "12-12-12",
+      "status": "active"
+    },
+    {
+      "id": "2",
+      "email": "alyonta",
+      "firstName": "Алёна",
+      "lastName": "Тарасова",
+      "birthDate": "2003-01-01",
+      "status": "active"
+    },
+    {
+      "id": "3",
+      "email": "alyonta",
+      "firstName": "Алёна",
+      "lastName": "Тарасова",
+      "middleName": "Васильевна",
+      "birthDate": "2003-01-01",
+      "blockedUntil": "12-12-12",
+      "inactiveSince": "13-13-13",
+      "status": "inactive"
+    },
+    {
+      "id": "4",
+      "email": "alyonta",
+      "firstName": "Алёна",
+      "lastName": "Тарасова",
+      "birthDate": "2003-01-01",
+      "inactiveSince": "13-13-13",
+      "status": "inactive"
+    }
+  ],
+  "employees": [
+    {
+      "id": "5",
+      "email": "alyonta",
+      "firstName": "Алёна",
+      "lastName": "Тарасова",
+      "middleName": "Васильевна",
+      "position": [
+        "Консультант",
+        "Банкир"
+      ],
+      "blockedUntil": "12-12-12",
+      "status": "active"
+    },
+    {
+      "id": "6",
+      "email": "alyonta",
+      "firstName": "Алёна",
+      "lastName": "Тарасова",
+      "status": "active"
+    },
+    {
+      "id": "7",
+      "email": "alyonta",
+      "firstName": "Алёна",
+      "lastName": "Тарасова",
+      "middleName": "Васильевна",
+      "position": [
+        "Консультант"
+      ],
+      "blockedUntil": "12-12-12",
+      "inactiveSince": "13-13-13",
+      "status": "inactive"
+    },
+    {
+      "id": "8",
+      "email": "alyonta",
+      "firstName": "Алёна",
+      "lastName": "Тарасова",
+      "inactiveSince": "13-13-13",
+      "status": "inactive"
+    },
+    {
+      "id": "edb0",
+      "email": "a@mail.ru",
+      "firstName": "Марина",
+      "lastName": "Иванова",
+      "middleName": "Геннадьевна",
+      "birthDate": "2024-03-07",
+      "position": [
+        "Рекрутер"
+      ],
+      "permissions": []
+    }
+  ]
+}

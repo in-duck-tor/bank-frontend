@@ -1,4 +1,5 @@
 import { registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import localeRu from '@angular/common/locales/ru';
 import { Component, LOCALE_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -9,7 +10,7 @@ registerLocaleData(localeRu);
 
 @Component({
   standalone: true,
-  imports: [RouterModule, TuiRootModule],
+  imports: [RouterModule, TuiRootModule, HttpClientModule],
   selector: 'bank-employee-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.less',

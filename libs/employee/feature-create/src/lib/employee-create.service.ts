@@ -1,8 +1,9 @@
 import { Injectable, Injector, inject } from '@angular/core';
 import { TuiDialogService } from '@taiga-ui/core';
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
-import { Observable, take, tap } from 'rxjs';
+import { switchMap, take } from 'rxjs';
 
+import { HttpClient } from '@angular/common/http';
 import {
   EmployeeCreateDialogComponent,
   EmployeeCreateResult,
@@ -12,8 +13,9 @@ import {
 export class EmployeeCreateService {
   private readonly tuiDialogService = inject(TuiDialogService);
   private readonly injector = inject(Injector);
+  private readonly http = inject(HttpClient);
 
-  openDialog(): Observable<EmployeeCreateResult> {
+  openDialog() {
     return this.tuiDialogService
       .open<EmployeeCreateResult>(
         new PolymorpheusComponent(EmployeeCreateDialogComponent, this.injector),
@@ -23,10 +25,12 @@ export class EmployeeCreateService {
         },
       )
       .pipe(
-        tap(({ onRequestError }) => {
-          onRequestError();
-        }),
+        switchMap(result => this.create(result.formValue)),
         take(1),
       );
+  }
+
+  private create(request: EmployeeCreateResult['formValue']) {
+    return this.http.post('http://localhost:8000/employees', request);
   }
 }

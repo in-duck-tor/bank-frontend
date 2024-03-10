@@ -6,19 +6,20 @@ import {
   inject,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, takeUntil } from 'rxjs';
+import { BehaviorSubject, filter, map, switchMap, takeUntil } from 'rxjs';
 
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {
   EmployeeFeedItemComponent,
   EmployeeStatus,
   ShortEmployee,
 } from '@bnk/employee/api';
-import { TuiDestroyService } from '@taiga-ui/cdk';
+import { TuiDestroyService, tuiIsPresent } from '@taiga-ui/cdk';
 
 @Component({
   selector: 'bnk-all-employees-list',
   standalone: true,
-  imports: [CommonModule, EmployeeFeedItemComponent],
+  imports: [CommonModule, EmployeeFeedItemComponent, HttpClientModule],
   providers: [TuiDestroyService],
   templateUrl: './all-employees-list.component.html',
   styleUrl: './all-employees-list.component.less',
@@ -27,57 +28,39 @@ import { TuiDestroyService } from '@taiga-ui/cdk';
 export class AllEmployeesListComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly destroy$ = inject(TuiDestroyService);
+  private readonly http = inject(HttpClient);
 
-  readonly mock$ = new BehaviorSubject<ShortEmployee[]>([]);
-
-  readonly mocks: Record<EmployeeStatus, ShortEmployee[]> = {
-    [EmployeeStatus.Active]: [
-      {
-        id: 1,
-        email: 'alyonta',
-        firstName: 'Алёна',
-        lastName: 'Тарасова',
-        middleName: 'Васильевна',
-        position: 'Консультант',
-        blockedUntil: '12-12-12',
-        status: EmployeeStatus.Active,
-      },
-      {
-        id: 1,
-        email: 'alyonta',
-        firstName: 'Алёна',
-        lastName: 'Тарасова',
-        status: EmployeeStatus.Active,
-      },
-    ],
-    [EmployeeStatus.Inactive]: [
-      {
-        id: 3,
-        email: 'alyonta',
-        firstName: 'Алёна',
-        lastName: 'Тарасова',
-        middleName: 'Васильевна',
-        position: 'Консультант',
-        blockedUntil: '12-12-12',
-        inactiveSince: '13-13-13',
-        status: EmployeeStatus.Inactive,
-      },
-      {
-        id: 4,
-        email: 'alyonta',
-        firstName: 'Алёна',
-        lastName: 'Тарасова',
-        inactiveSince: '13-13-13',
-        status: EmployeeStatus.Inactive,
-      },
-    ],
-  };
+  readonly employees$ = new BehaviorSubject<ShortEmployee[]>([]);
 
   ngOnInit() {
-    this.route.data.pipe(takeUntil(this.destroy$)).subscribe(data => {
-      this.mock$.next(
-        data['status'] ? this.mocks[data['status'] as EmployeeStatus] : [],
+    const getEmployees = this.http
+      .get<ShortEmployee[]>('http://localhost:8000/employees')
+      .pipe(
+        map(employees =>
+          employees.map(employee => ({
+            ...employee,
+            status: employee.inactiveSince
+              ? EmployeeStatus.Inactive
+              : EmployeeStatus.Active,
+          })),
+        ),
       );
-    });
+
+    this.route.data
+      .pipe(
+        map(data => data['status'] as EmployeeStatus),
+        filter(tuiIsPresent),
+        switchMap(status =>
+          getEmployees.pipe(
+            map(employees =>
+              employees.filter(employee => employee.status == status),
+            ),
+          ),
+        ),
+        takeUntil(this.destroy$),
+      )
+      .subscribe(employees => {
+        this.employees$.next(employees);
+      });
   }
 }

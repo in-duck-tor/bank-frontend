@@ -6,6 +6,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
+
 import {
   TuiDay,
   TuiLetModule,
@@ -17,10 +19,10 @@ import {
   TuiDataListWrapperModule,
   TuiInputDateModule,
   TuiInputModule,
+  TuiInputTagModule,
   TuiMultiSelectModule,
 } from '@taiga-ui/kit';
 import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
-import { BehaviorSubject } from 'rxjs';
 
 interface EmployeeCreateFormValue {
   email: string;
@@ -28,7 +30,7 @@ interface EmployeeCreateFormValue {
   lastName: string;
   middleName: string | null;
   birthDate: TuiDay;
-  position: string | null;
+  position: string[];
   permissions: string[];
 }
 
@@ -49,6 +51,7 @@ export interface EmployeeCreateResult {
     TuiMultiSelectModule,
     TuiDataListWrapperModule,
     TuiLetModule,
+    TuiInputTagModule,
   ],
   templateUrl: './employee-create-dialog.component.html',
   styleUrl: './employee-create-dialog.component.less',
@@ -82,7 +85,7 @@ export class EmployeeCreateDialogComponent {
     birthDate: new FormControl<TuiDay | null>(null, {
       validators: [Validators.required],
     }),
-    position: new FormControl<string | null>(''),
+    position: new FormControl<string[]>([], { nonNullable: true }),
     permissions: new FormControl<string[]>([], { nonNullable: true }),
   });
 

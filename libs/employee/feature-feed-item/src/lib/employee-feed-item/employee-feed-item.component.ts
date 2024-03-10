@@ -36,7 +36,7 @@ export class EmployeeFeedItemComponent implements OnChanges {
   }
 
   get position(): string | null {
-    return this.employee.position ?? null;
+    return this.employee.position?.join(' • ') ?? null;
   }
 
   get isBlocked(): boolean {

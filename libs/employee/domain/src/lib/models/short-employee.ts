@@ -9,7 +9,7 @@ export interface ShortEmployee {
   firstName: string;
   lastName: string;
   middleName?: string | null;
-  position?: string | null;
+  position: string[];
   blockedUntil?: string | null;
   inactiveSince?: string | null;
   status: EmployeeStatus;

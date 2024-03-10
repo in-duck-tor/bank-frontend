@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TuiButtonModule } from '@taiga-ui/experimental';
 
+import { HttpClientModule } from '@angular/common/http';
 import { EmployeeCreateService } from '@bnk/employee/api';
 import {
   HeaderComponent,
@@ -14,7 +15,13 @@ import { takeUntil } from 'rxjs';
 @Component({
   selector: 'bnk-all-employees-layout',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, RouterModule, TuiButtonModule],
+  imports: [
+    CommonModule,
+    HeaderComponent,
+    RouterModule,
+    TuiButtonModule,
+    HttpClientModule,
+  ],
   providers: [EmployeeCreateService, TuiDestroyService],
   templateUrl: './all-employees-layout.component.html',
   styleUrl: './all-employees-layout.component.less',

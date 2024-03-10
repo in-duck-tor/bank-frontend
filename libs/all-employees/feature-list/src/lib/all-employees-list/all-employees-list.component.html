@@ -1,3 +1,3 @@
-@for (item of mock$ | async; track item.id) {
+@for (item of employees$ | async; track item.id) {
   <bnk-employee-feed-item [employee]="item"></bnk-employee-feed-item>
 }
