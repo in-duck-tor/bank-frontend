@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AllTransactionsLayoutComponent } from '@bnk/all-transactions/feature-layout';
+import { AllTransactionsStoreModule } from '@bnk/all-transactions/store';
 import { ROUTER_PATHS } from '@bnk/shared/util-navigation';
 
 @NgModule({
   imports: [
+    AllTransactionsStoreModule,
     RouterModule.forChild([
       {
         path: '',

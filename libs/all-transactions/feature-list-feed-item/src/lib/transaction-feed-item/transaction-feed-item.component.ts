@@ -30,7 +30,7 @@ import { TuiFormatNumberPipeModule } from '@taiga-ui/core';
 })
 export class TransactionFeedItemComponent {
   @Input({ required: true }) transaction!: Transaction;
-  @Input({ required: true }) currentAccountNumber!: string;
+  @Input({ required: true }) currentAccountNumber: string | null = null;
 
   readonly getAmountType = (
     transaction: Transaction,
@@ -45,7 +45,6 @@ export class TransactionFeedItemComponent {
     if (transaction.depositOn?.accountNumber === this.currentAccountNumber) {
       return TransactionType.Deposit;
     }
-
     return TransactionType.Withdraw;
   };
 }

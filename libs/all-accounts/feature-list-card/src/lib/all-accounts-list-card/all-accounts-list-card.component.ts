@@ -72,6 +72,7 @@ export class AllAccountsListCardComponent {
     return '';
   }
 
+  // TODO: потом куда-то выводить инфу о статусе
   @tuiPure
   getStatusTooltip(account: Account): string {
     switch (account.state) {

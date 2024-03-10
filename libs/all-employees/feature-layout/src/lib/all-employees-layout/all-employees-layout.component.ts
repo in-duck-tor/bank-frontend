@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { TuiButtonModule } from '@taiga-ui/experimental';
 
 import { HttpClientModule } from '@angular/common/http';
+import { AllEmployeesStoreFacade } from '@bnk/all-employees/store';
 import { EmployeeCreateService } from '@bnk/employee/api';
 import {
   HeaderComponent,
@@ -30,6 +31,7 @@ import { takeUntil } from 'rxjs';
 export class AllEmployeesLayoutComponent {
   private readonly employeeCreateService = inject(EmployeeCreateService);
   private readonly destroy$ = inject(TuiDestroyService);
+  private readonly allEmployeesStoreFacade = inject(AllEmployeesStoreFacade);
 
   readonly navigationItems: NavigationItem[] = [
     {
@@ -46,6 +48,8 @@ export class AllEmployeesLayoutComponent {
     this.employeeCreateService
       .openDialog()
       .pipe(takeUntil(this.destroy$))
-      .subscribe();
+      .subscribe(() => {
+        this.allEmployeesStoreFacade.reload();
+      });
   }
 }

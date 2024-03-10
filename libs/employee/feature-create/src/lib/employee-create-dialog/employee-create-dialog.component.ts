@@ -25,7 +25,7 @@ import {
 import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
 
 interface EmployeeCreateFormValue {
-  email: string;
+  login: string;
   firstName: string;
   lastName: string;
   middleName: string | null;
@@ -64,14 +64,12 @@ export class EmployeeCreateDialogComponent {
 
   readonly maxDate = TuiDay.currentLocal();
   readonly minDate = this.maxDate.append({ year: -100 });
-  readonly items$ = new BehaviorSubject<string[]>([
-    'Редактирование пользователей',
-  ]);
+  readonly items$ = new BehaviorSubject<string[]>([]);
 
   readonly employeeForm = new FormGroup({
-    email: new FormControl<string>('', {
+    login: new FormControl<string>('', {
       nonNullable: true,
-      validators: [Validators.required, Validators.email],
+      validators: [Validators.required],
     }),
     firstName: new FormControl<string>('', {
       nonNullable: true,
@@ -104,7 +102,7 @@ export class EmployeeCreateDialogComponent {
     this.context.$implicit.next({
       onRequestError: () => this.onRequestError(),
       formValue: {
-        email: formValue.email,
+        login: formValue.login,
         firstName: formValue.firstName.trim(),
         lastName: formValue.lastName.trim(),
         middleName: formValue.middleName?.trim() ?? null,

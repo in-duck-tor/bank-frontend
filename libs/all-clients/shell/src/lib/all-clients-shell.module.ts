@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AllClientsLayoutComponent } from '@bnk/all-clients/feature-layout';
+import { AllClientsStoreModule } from '@bnk/all-clients/store';
+import { ClientCreateModule } from '@bnk/client/api';
 import { ClientStatus } from '@bnk/client/domain';
 import { ROUTER_PATHS } from '@bnk/shared/util-navigation';
 
 @NgModule({
   imports: [
+    AllClientsStoreModule,
+    ClientCreateModule,
     RouterModule.forChild([
       {
         path: '',

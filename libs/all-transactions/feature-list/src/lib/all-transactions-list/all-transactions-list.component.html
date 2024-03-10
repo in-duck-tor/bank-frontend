@@ -12,11 +12,11 @@
 </div>
 
 <div class="tui-space_top-4">
-  @for (item of mock; track item.id) {
+  @for (transaction of transactions$ | async; track transaction.id) {
     <bnk-transaction-feed-item
       class="tui-space_top-2"
-      [transaction]="item"
-      currentAccountNumber="1010101"
+      [transaction]="transaction"
+      [currentAccountNumber]="accountNumber$ | async"
     ></bnk-transaction-feed-item>
   }
 </div>

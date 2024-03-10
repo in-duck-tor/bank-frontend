@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs';
 import { TuiDestroyService } from '@taiga-ui/cdk';
 import { TuiButtonModule } from '@taiga-ui/experimental';
 
+import { AllClientsStoreFacade } from '@bnk/all-clients/store';
 import { ClientCreateService } from '@bnk/client/api';
 import {
   HeaderComponent,
@@ -16,7 +17,7 @@ import {
   selector: 'bnk-all-clients-layout',
   standalone: true,
   imports: [CommonModule, RouterModule, HeaderComponent, TuiButtonModule],
-  providers: [TuiDestroyService, ClientCreateService],
+  providers: [TuiDestroyService],
   templateUrl: './all-clients-layout.component.html',
   styleUrl: './all-clients-layout.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,6 +25,7 @@ import {
 export class AllClientsLayoutComponent {
   private readonly clientCreateService = inject(ClientCreateService);
   private readonly destroy$ = inject(TuiDestroyService);
+  private readonly allClientsStoreFacade = inject(AllClientsStoreFacade);
 
   readonly navigationItems: NavigationItem[] = [
     {
@@ -40,6 +42,8 @@ export class AllClientsLayoutComponent {
     this.clientCreateService
       .openDialog()
       .pipe(takeUntil(this.destroy$))
-      .subscribe();
+      .subscribe(() => {
+        this.allClientsStoreFacade.reload();
+      });
   }
 }

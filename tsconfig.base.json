@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@bnk/shared/data-access": ["libs/shared/data-access/src/index.ts"],
+      "@bnk/all-employees/store": ["libs/all-employees/store/src/index.ts"],
       "@bnk/all-accounts/api": ["libs/all-accounts/api/src/index.ts"],
       "@bnk/all-accounts/domain": ["libs/all-accounts/domain/src/index.ts"],
       "@bnk/all-accounts/feature-layout": [
@@ -28,6 +28,7 @@
         "libs/all-accounts/feature-list-card/src/index.ts"
       ],
       "@bnk/all-accounts/shell": ["libs/all-accounts/shell/src/index.ts"],
+      "@bnk/all-accounts/store": ["libs/all-accounts/store/src/index.ts"],
       "@bnk/all-clients/api": ["libs/all-clients/api/src/index.ts"],
       "@bnk/all-clients/feature-layout": [
         "libs/all-clients/feature-layout/src/index.ts"
@@ -36,6 +37,7 @@
         "libs/all-clients/feature-list/src/index.ts"
       ],
       "@bnk/all-clients/shell": ["libs/all-clients/shell/src/index.ts"],
+      "@bnk/all-clients/store": ["libs/all-clients/store/src/index.ts"],
       "@bnk/all-employees/api": ["libs/all-employees/api/src/index.ts"],
       "@bnk/all-employees/domain": ["libs/all-employees/domain/src/index.ts"],
       "@bnk/all-employees/feature-layout": [
@@ -76,6 +78,9 @@
       "@bnk/all-transactions/shell": [
         "libs/all-transactions/shell/src/index.ts"
       ],
+      "@bnk/all-transactions/store": [
+        "libs/all-transactions/store/src/index.ts"
+      ],
       "@bnk/client/api": ["libs/client/api/src/index.ts"],
       "@bnk/client/domain": ["libs/client/domain/src/index.ts"],
       "@bnk/client/feature-create": ["libs/client/feature-create/src/index.ts"],
@@ -102,6 +107,7 @@
       "@bnk/loan-rate/feature-create-loan-rate": [
         "libs/loan-rate/feature-create-loan-rate/src/index.ts"
       ],
+      "@bnk/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@bnk/shared/ui-cards": ["libs/shared/ui-cards/src/index.ts"],
       "@bnk/shared/ui-layout-elements": [
         "libs/shared/ui-layout-elements/src/index.ts"

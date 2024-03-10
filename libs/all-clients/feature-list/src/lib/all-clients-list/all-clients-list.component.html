@@ -1,3 +1,6 @@
-@for (item of mock$ | async; track item.id) {
-  <bnk-client-feed-item [client]="item"></bnk-client-feed-item>
+@for (client of clients$ | async; track client.id) {
+  <bnk-client-feed-item
+    [client]="client"
+    (action)="reload()"
+  ></bnk-client-feed-item>
 }

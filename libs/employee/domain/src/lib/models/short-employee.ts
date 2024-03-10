@@ -5,12 +5,13 @@ export enum EmployeeStatus {
 
 export interface ShortEmployee {
   id: number;
-  email: string;
+  login: string;
+  email?: string | null;
   firstName: string;
   lastName: string;
   middleName?: string | null;
-  position: string[];
-  blockedUntil?: string | null;
+  position: readonly string[];
+  isBlocked: boolean;
   inactiveSince?: string | null;
   status: EmployeeStatus;
 }

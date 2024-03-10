@@ -5,12 +5,13 @@ export enum ClientStatus {
 
 export interface ShortClient {
   id: number;
-  email: string;
+  login: string;
+  email?: string | null;
   firstName: string;
   lastName: string;
   middleName?: string | null;
-  birthDate: string;
-  blockedUntil?: string | null;
+  birthDate?: string | null;
+  isBlocked: boolean;
   inactiveSince?: string | null;
   status: ClientStatus;
 }

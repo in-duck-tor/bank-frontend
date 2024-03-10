@@ -1,8 +1,9 @@
 import { Injectable, Injector, inject } from '@angular/core';
 import { TuiDialogService } from '@taiga-ui/core';
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
-import { Observable, take, tap } from 'rxjs';
+import { switchMap, take } from 'rxjs';
 
+import { CreateLoanRateApiService } from './data-access/create-loan-rate-api.service';
 import {
   LoanRateCreateDialogComponent,
   LoanRateCreateResult,
@@ -12,8 +13,9 @@ import {
 export class LoanRateCreateService {
   private readonly tuiDialogService = inject(TuiDialogService);
   private readonly injector = inject(Injector);
+  private readonly createLoanRateApiService = inject(CreateLoanRateApiService);
 
-  openDialog(): Observable<LoanRateCreateResult> {
+  openDialog() {
     return this.tuiDialogService
       .open<LoanRateCreateResult>(
         new PolymorpheusComponent(LoanRateCreateDialogComponent, this.injector),
@@ -23,9 +25,12 @@ export class LoanRateCreateService {
         },
       )
       .pipe(
-        tap(({ onRequestError }) => {
-          onRequestError();
-        }),
+        switchMap(({ formValue }) =>
+          this.createLoanRateApiService.create({
+            name: formValue.name,
+            interestRate: formValue.interestRate,
+          }),
+        ),
         take(1),
       );
   }

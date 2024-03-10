@@ -1,8 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AccountStatus } from '@bnk/all-accounts/domain';
 
-import { Account, AccountStatus, AccountType } from '@bnk/all-accounts/domain';
 import { AllAccountsListCardComponent } from '@bnk/all-accounts/feature-list-card';
+import { EMPTY, map, switchMap } from 'rxjs';
+
+import { AllAccountsStoreFacade } from '@bnk/all-accounts/store';
 
 @Component({
   selector: 'bnk-all-accounts-list',
@@ -13,33 +17,20 @@ import { AllAccountsListCardComponent } from '@bnk/all-accounts/feature-list-car
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AllAccountsListComponent {
-  readonly mock: Account[] = [
-    {
-      number: '1111145451',
-      currencyCode: 'RUB',
-      amount: 200,
-      state: AccountStatus.Active,
-      comment: 'На подарок',
-      type: AccountType.Payment,
-    },
-    {
-      number: '111111',
-      currencyCode: 'USD',
-      amount: 10000000,
-      state: AccountStatus.Active,
-      type: AccountType.Payment,
-    },
-    {
-      number: '111111',
-      amount: 0,
-      state: AccountStatus.Frozen,
-      type: AccountType.Payment,
-    },
-    {
-      number: '111111',
-      amount: 0,
-      state: AccountStatus.Closed,
-      type: AccountType.Loan,
-    },
-  ];
+  private readonly route = inject(ActivatedRoute);
+  private readonly allAccountsStoreFacade = inject(AllAccountsStoreFacade);
+
+  readonly accounts$ = this.route.data.pipe(
+    map(data => data['status'] as AccountStatus),
+    switchMap(status => {
+      switch (status) {
+        case AccountStatus.Active:
+          return this.allAccountsStoreFacade.getActiveAccounts();
+        case AccountStatus.Closed:
+          return this.allAccountsStoreFacade.getClosedAccounts();
+        default:
+          return EMPTY;
+      }
+    }),
+  );
 }

@@ -8,16 +8,12 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/bank-employee",
         "index": "apps/bank-employee/src/index.html",
         "main": "apps/bank-employee/src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/bank-employee/tsconfig.app.json",
         "inlineStyleLanguage": "less",
         "assets": [
@@ -65,6 +61,9 @@
       "defaultConfiguration": "production"
     },
     "serve": {
+      "options": {
+        "proxyConfig": "apps/bank-employee/proxy.config.js"
+      },
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {

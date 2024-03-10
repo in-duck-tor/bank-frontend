@@ -1,0 +1,9 @@
+{
+  "name": "all-accounts--store",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/all-accounts/store/src",
+  "prefix": "bnk",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}

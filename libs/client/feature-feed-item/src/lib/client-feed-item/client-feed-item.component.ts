@@ -2,8 +2,10 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
   OnChanges,
+  Output,
   inject,
 } from '@angular/core';
 
@@ -26,6 +28,7 @@ export class ClientFeedItemComponent implements OnChanges {
   );
 
   @Input({ required: true }) client!: ShortClient;
+  @Output() action = new EventEmitter<void>();
 
   actions: IAction[] = [];
 
@@ -36,7 +39,7 @@ export class ClientFeedItemComponent implements OnChanges {
   }
 
   get isBlocked(): boolean {
-    return !!this.client.blockedUntil && !this.client.inactiveSince;
+    return this.client.isBlocked && !this.client.inactiveSince;
   }
 
   get tooltipText(): string | null {
@@ -46,6 +49,9 @@ export class ClientFeedItemComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
-    this.actions = this.clientFeedItemActionsService.getActions(this.client);
+    this.actions = this.clientFeedItemActionsService.getActions(
+      this.client,
+      this.action,
+    );
   }
 }

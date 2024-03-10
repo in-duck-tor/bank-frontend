@@ -15,7 +15,7 @@ import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
 import { BehaviorSubject } from 'rxjs';
 
 interface LoanRateCreateFormValue {
-  title: string;
+  name: string;
   interestRate: number;
 }
 
@@ -45,7 +45,7 @@ export class LoanRateCreateDialogComponent {
   ) as TuiDialogContext<LoanRateCreateResult>;
 
   readonly loanRateForm = new FormGroup({
-    title: new FormControl<string>('', {
+    name: new FormControl<string>('', {
       nonNullable: true,
       validators: [Validators.required],
     }),
@@ -70,7 +70,7 @@ export class LoanRateCreateDialogComponent {
     this.context.$implicit.next({
       onRequestError: () => this.onRequestError(),
       formValue: {
-        title: formValue.title.trim(),
+        name: formValue.name.trim(),
         interestRate: formValue.interestRate ?? 0,
       },
     });

@@ -3,10 +3,12 @@ import { RouterModule } from '@angular/router';
 
 import { AccountStatus } from '@bnk/all-accounts/domain';
 import { AllAccountsLayoutComponent } from '@bnk/all-accounts/feature-layout';
+import { AllAccountsStoreModule } from '@bnk/all-accounts/store';
 import { ROUTER_PATHS } from '@bnk/shared/util-navigation';
 
 @NgModule({
   imports: [
+    AllAccountsStoreModule,
     RouterModule.forChild([
       {
         path: '',

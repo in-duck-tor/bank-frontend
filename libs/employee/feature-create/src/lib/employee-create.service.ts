@@ -3,7 +3,7 @@ import { TuiDialogService } from '@taiga-ui/core';
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
 import { switchMap, take } from 'rxjs';
 
-import { HttpClient } from '@angular/common/http';
+import { CreateEmployeeApiService } from './data-access/create-employee-api.service';
 import {
   EmployeeCreateDialogComponent,
   EmployeeCreateResult,
@@ -13,7 +13,7 @@ import {
 export class EmployeeCreateService {
   private readonly tuiDialogService = inject(TuiDialogService);
   private readonly injector = inject(Injector);
-  private readonly http = inject(HttpClient);
+  private readonly createEmployeeApiService = inject(CreateEmployeeApiService);
 
   openDialog() {
     return this.tuiDialogService
@@ -25,12 +25,18 @@ export class EmployeeCreateService {
         },
       )
       .pipe(
-        switchMap(result => this.create(result.formValue)),
+        switchMap(({ formValue }) =>
+          this.createEmployeeApiService.create({
+            login: formValue.login,
+            firstName: formValue.firstName,
+            lastName: formValue.lastName,
+            middleName: formValue.middleName,
+            birthDate: formValue.birthDate.toUtcNativeDate().toJSON(),
+            position: formValue.position,
+            permissions: formValue.permissions,
+          }),
+        ),
         take(1),
       );
-  }
-
-  private create(request: EmployeeCreateResult['formValue']) {
-    return this.http.post('http://localhost:8000/employees', request);
   }
 }

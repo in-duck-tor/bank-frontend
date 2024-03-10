@@ -18,10 +18,10 @@
       iconRight="tuiIconUser"
       paymentSystem="mastercard"
       size="l"
-      [tuiHint]="account | tuiMapper: getStatusTooltip"
+      [tuiHint]="account.number"
       [iconLeft]="account | tuiMapper: getStatusIcon"
     >
-      {{ account.number }}
+      {{ account.number.slice(-4) }}
     </tui-thumbnail-card>
     <div tuiSubtitle>{{ account | tuiMapper: getTypeText }}</div>
   </div>

@@ -1,5 +1,5 @@
 export interface ShortLoanRate {
   id: number;
-  title: string;
+  name: string;
   interestRate: number;
 }

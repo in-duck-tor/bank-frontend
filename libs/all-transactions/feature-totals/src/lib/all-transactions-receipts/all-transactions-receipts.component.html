@@ -1,8 +1,10 @@
-<tui-island size="l">
+<tui-island size="l" *tuiLet="receipts$ | async as receipts">
   <div class="tui-island__content">
-    <h3 class="tui-island__title">Расходы за весь период:</h3>
+    <h3 class="tui-island__title">Поступления за весь период:</h3>
     <p class="tui-island__paragraph">
-      {{ 1000000 | tuiFormatNumber }} {{ 'RUB' | tuiCurrency }}
+      {{ receipts ?? 0 | tuiFormatNumber }}
+      <!-- TODO: убрать хардкод -->
+      {{ 'RUB' | tuiCurrency }}
     </p>
   </div>
 </tui-island>

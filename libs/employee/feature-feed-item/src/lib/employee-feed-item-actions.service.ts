@@ -1,19 +1,32 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { EventEmitter, Injectable, inject } from '@angular/core';
 
 import { EmployeeStatus, ShortEmployee } from '@bnk/employee/domain';
 import { IAction } from '@bnk/shared/ui-cards';
+import { take } from 'rxjs';
 
 @Injectable()
 export class EmployeeFeedItemActionsService {
-  getActions(employee: ShortEmployee): IAction[] {
+  private readonly http = inject(HttpClient);
+
+  getActions(
+    employee: ShortEmployee,
+    actionsEventEmmiter: EventEmitter<void>,
+  ): IAction[] {
     switch (employee.status) {
       case EmployeeStatus.Active:
         return [
           {
-            name: employee.blockedUntil ? 'Разблокировать' : 'Заблокировать',
-            onClick: employee.blockedUntil
-              ? () => this.onUnblock()
-              : () => this.onBlock(),
+            name: employee.isBlocked ? 'Разблокировать' : 'Заблокировать',
+            onClick: () => {
+              const banAction$ = employee.isBlocked
+                ? this.onUnblock(employee)
+                : this.onBlock(employee);
+
+              banAction$
+                .pipe(take(1))
+                .subscribe(() => actionsEventEmmiter.emit());
+            },
           },
         ];
       case EmployeeStatus.Inactive:
@@ -21,11 +34,13 @@ export class EmployeeFeedItemActionsService {
     }
   }
 
-  private onBlock(): void {
-    console.log(1);
+  // TODO: убрать кринж
+  private onBlock(employee: ShortEmployee) {
+    return this.http.post(`/user/api/v1/ban/${employee.id}`, {});
   }
 
-  private onUnblock(): void {
-    console.log(2);
+  // TODO: убрать кринж
+  private onUnblock(employee: ShortEmployee) {
+    return this.http.delete(`/user/api/v1/ban/${employee.id}`);
   }
 }

@@ -1,7 +1,7 @@
 import { registerLocaleData } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import localeRu from '@angular/common/locales/ru';
-import { Component, LOCALE_ID } from '@angular/core';
+import { Component, LOCALE_ID, OnInit, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TUI_SANITIZER, TuiRootModule } from '@taiga-ui/core';
 import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
@@ -19,4 +19,11 @@ registerLocaleData(localeRu);
     { provide: LOCALE_ID, useValue: 'ru' },
   ],
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  ngOnInit(): void {
+    this.http
+      .get('http://89.19.214.8:8000/api/v1/bank')
+      .subscribe(res => console.log(res));
+  }
+  http = inject(HttpClient);
+}

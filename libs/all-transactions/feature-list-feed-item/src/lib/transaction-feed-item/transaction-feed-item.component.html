@@ -62,16 +62,17 @@
       <div tuiTitle>Списание</div>
     }
 
+    <!-- TODO: вынести в пайпу обрезку номера -->
     @default {
       <div tuiTitle>
         Перевод между счетами
         <div tuiSubtitle class="tui-space_top-2">
           <tui-thumbnail-card paymentSystem="mastercard" size="m">
-            {{ transaction.withdrawFrom!.accountNumber }}
+            {{ transaction.withdrawFrom!.accountNumber.slice(-4) }}
           </tui-thumbnail-card>
           →
           <tui-thumbnail-card paymentSystem="mastercard" size="m">
-            {{ transaction.depositOn!.accountNumber }}
+            {{ transaction.depositOn!.accountNumber.slice(-4) }}
           </tui-thumbnail-card>
         </div>
       </div>

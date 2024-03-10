@@ -1,3 +1,6 @@
 @for (item of employees$ | async; track item.id) {
-  <bnk-employee-feed-item [employee]="item"></bnk-employee-feed-item>
+  <bnk-employee-feed-item
+    [employee]="item"
+    (action)="reload()"
+  ></bnk-employee-feed-item>
 }

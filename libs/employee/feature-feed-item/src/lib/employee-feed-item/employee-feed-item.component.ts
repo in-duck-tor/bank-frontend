@@ -2,8 +2,10 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
   OnChanges,
+  Output,
   inject,
 } from '@angular/core';
 
@@ -26,6 +28,7 @@ export class EmployeeFeedItemComponent implements OnChanges {
   );
 
   @Input({ required: true }) employee!: ShortEmployee;
+  @Output() action = new EventEmitter<void>();
 
   actions: IAction[] = [];
 
@@ -40,7 +43,7 @@ export class EmployeeFeedItemComponent implements OnChanges {
   }
 
   get isBlocked(): boolean {
-    return !!this.employee.blockedUntil && !this.employee.inactiveSince;
+    return this.employee.isBlocked && !this.employee.inactiveSince;
   }
 
   get tooltipText(): string | null {
@@ -52,6 +55,7 @@ export class EmployeeFeedItemComponent implements OnChanges {
   ngOnChanges(): void {
     this.actions = this.employeeFeedItemActionsService.getActions(
       this.employee,
+      this.action,
     );
   }
 }
