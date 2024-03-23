@@ -139,6 +139,11 @@
       "id": "2a2e",
       "name": "Еще тариф",
       "interestRate": 12
+    },
+    {
+      "id": "cd33",
+      "name": "Тариф 4",
+      "interestRate": 13
     }
   ]
 }

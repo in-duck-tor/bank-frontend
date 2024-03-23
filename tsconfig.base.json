@@ -15,7 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@bnk/all-employees/store": ["libs/all-employees/store/src/index.ts"],
       "@bnk/all-accounts/api": ["libs/all-accounts/api/src/index.ts"],
       "@bnk/all-accounts/domain": ["libs/all-accounts/domain/src/index.ts"],
       "@bnk/all-accounts/feature-layout": [
@@ -47,6 +46,7 @@
         "libs/all-employees/feature-list/src/index.ts"
       ],
       "@bnk/all-employees/shell": ["libs/all-employees/shell/src/index.ts"],
+      "@bnk/all-employees/store": ["libs/all-employees/store/src/index.ts"],
       "@bnk/all-loan-rates/api": ["libs/all-loan-rates/api/src/index.ts"],
       "@bnk/all-loan-rates/domain": ["libs/all-loan-rates/domain/src/index.ts"],
       "@bnk/all-loan-rates/feature-layout": [
@@ -114,7 +114,8 @@
       ],
       "@bnk/shared/util-navigation": [
         "libs/shared/util-navigation/src/index.ts"
-      ]
+      ],
+      "@bnk/shared/util-theme": ["libs/shared/util-theme/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

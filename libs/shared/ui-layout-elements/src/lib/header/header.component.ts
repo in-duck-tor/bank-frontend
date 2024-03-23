@@ -1,6 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  inject,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ThemeService } from '@bnk/shared/util-theme';
 import {
   TuiDataListModule,
   TuiExpandModule,
@@ -50,7 +56,17 @@ export interface NavigationItem {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
+  private readonly nightMode$ = inject(ThemeService);
+
   @Input() title: string | null = null;
   @Input() rightContent: PolymorpheusContent;
   @Input() navigationItems: NavigationItem[] = [];
+
+  get themeIcon(): 'tuiIconMoon' | 'tuiIconSun' {
+    return this.nightMode$.value ? 'tuiIconSun' : 'tuiIconMoon';
+  }
+
+  toggleTheme(): void {
+    this.nightMode$.toggle();
+  }
 }

@@ -1,4 +1,6 @@
-<tui-root>
+<tui-theme-night *ngIf="nightMode$ | async"></tui-theme-night>
+
+<tui-root [tuiMode]="mode">
   <router-outlet> </router-outlet>
 
   <ng-container ngProjectAs="tuiOverContent">
